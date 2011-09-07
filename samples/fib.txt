@@ -1,0 +1,20 @@
+.:
+
+def fib . \ x ->:
+  n = 0
+  m = 1
+  i = 0
+  while (< i x):
+    t = n
+    <- n m
+    <- m . + m t
+    <- i . + i 1
+  m
+
+# the standard "->" can't be referenced yet
+#def + . typed (js "function(x, y) { return x + y; }") (-> Int Int Int)
+#def < . typed (js "function(x, y) { return x < y; }") (-> Int Int Bool)
+
+def + . js "function(x, y) { return x + y; }"
+def < . js "function(x, y) { return x < y; }"
+
