@@ -1,0 +1,53 @@
+A note on the indentation syntax.
+
+: (colon) starts a new indentation block, like "let", "of" or "where" in Haskell.
+Each line in an indentation block is considered as an block item.
+If a block item consists of 2 or more elements, they are automatically parenthesized.
+
+For example:
+
+foo:
+  bar
+  baz quux
+  zot
+
+means
+
+foo
+  bar
+  (baz quux)
+  zot
+
+.
+
+Note that the entire block is not parenthesized.
+
+As in Haskell, you can continue a block item by indenting more.
+
+. (dot) acts like an opening parenthesis, but lacks a matching closing parenthesis.
+Its scope extends to the right as far as possible, before hitting a closing parenthesis
+or the end of a block item the dot belongs to.
+
+Example:
+
+(foo . bar baz)
+
+means
+
+(foo (bar baz))
+
+Also:
+
+.:
+def a . + b c
+def z . do:
+  x = 3
+  + x x
+
+means
+
+((def a (+ b c))
+ (def z
+  (do
+    (x = 3)
+    (+ x x))))
